@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js" defer></script>
+    <title>ToDo Application</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="todo__input">
+        <div>
+          <input type="text" name="todo" placeholder="할 일을 입력하세요" />
+        </div>
+        <div>
+          <ul class="todo__list"></ul>
+        </div>
+      </div>
+      <div class="todo__output">
+        할 일:<span id="all-todo-count">0건</span> 완료:<span
+          id="complete-todo-count"
+          >0건</span
+        >
+        미완료:<span id="incomplete-todo-count">0건</span>
+      </div>
+    </div>
+  </body>
+</html>
