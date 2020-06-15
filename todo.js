@@ -28,7 +28,6 @@ delAllEle.addEventListener("click", () => {
   }
 
   // if (todoWrap.children.length === 0) {
-  //   console.log(todoWrap.children);
   //   alert("삭제할 항목이 없습니다.");
   // }
 
@@ -36,17 +35,17 @@ delAllEle.addEventListener("click", () => {
 });
 
 // 마지막 항목 삭제
-delLastEle.addEventListener("click", () => {
-  const toDoList = document.querySelectorAll("#list-body > tr");
-  if (toDoList.length > 0) {
-    let lastToDo = toDoList.length - 1;
-    todoWrap.removeChild(toDoList[lastToDo]);
-  } else {
-    // alert("삭제할 항목이 없습니다.");
-    return;
-  }
-  updateComplate();
-});
+// delLastEle.addEventListener("click", () => {
+//   const toDoList = document.querySelectorAll("#list-body > tr");
+//   if (toDoList.length > 0) {
+//     let lastToDo = toDoList.length - 1;
+//     todoWrap.removeChild(toDoList[lastToDo]);
+//   } else {
+//     // alert("삭제할 항목이 없습니다.");
+//     return;
+//   }
+//   updateComplate();
+// });
 
 // 선택 삭제
 delSelected.addEventListener("click", () => {
@@ -58,36 +57,32 @@ delSelected.addEventListener("click", () => {
     }
   });
 
-  if (!todoWrap.firstChild) {
-    // alert("삭제할 항목이 없습니다.");
-  }
   updateComplate();
 });
 
 // todo update상태
 todoWrap.addEventListener("click", updateComplate);
 
+// delete button 함수
+function deleteElement() {
+  const deleteBtn = this.parentNode.parentNode;
+  todoWrap.removeChild(deleteBtn);
+}
+
 // todo update 함수
 function updateComplate() {
   const completeCount = document.querySelector("#complete-todo-count");
   const inCompleteCount = document.querySelector("#incomplete-todo-count");
-  const toDoList = document.querySelectorAll("#list-body > tr");
   const allCount = document.querySelector("#all-todo-count");
-  const target = event.target.dataset.value;
+
+  const toDoList = document.querySelectorAll("#list-body > tr");
+  const checkCount = document.querySelectorAll(".check");
 
   allCount.innerHTML = toDoList.length;
-  inCompleteCount.innerHTML = toDoList.length;
-
-  if (target == null) {
-    return;
-  }
-  if (target === "check") {
-    event.target.classList.toggle("check");
-    const checkCount = document.querySelectorAll(".check");
-    completeCount.innerHTML = checkCount.length;
-    inCompleteCount.innerHTML = toDoList.length - checkCount.length;
-  }
+  completeCount.innerHTML = checkCount.length;
+  inCompleteCount.innerHTML = toDoList.length - checkCount.length;
 }
+
 // createElement 함수
 function addElement() {
   if (!contents.value) {
@@ -98,14 +93,31 @@ function addElement() {
   let tr = document.createElement("tr");
   tr.innerHTML = `
   <td><input type='checkbox' class='check-box' data-value="check"></td>
-  <td>${contents.value}</td>`;
+  <td>${contents.value}</td>
+  <td><button type="button" class="delete">X</button></td>`;
 
   todoWrap.appendChild(tr);
+
+  const checkBox = document.querySelectorAll(".check-box");
+  [...checkBox].forEach((item) => {
+    item.addEventListener("click", toggle);
+  });
+
+  const todoDelete = document.querySelectorAll(".delete");
+  [...todoDelete].forEach((item) => {
+    item.addEventListener("click", deleteElement);
+  });
 
   contents.value = "";
   // 입력하는 todo값 초기화
 }
 
+// check함수
+function toggle() {
+  if (this.checked) {
+    this.classList.toggle("check");
+  }
+}
 // 시계 함수
 const date = document.querySelector(".date");
 

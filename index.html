@@ -4,24 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
-    <title>ToDo Application</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>ToDo-application</title>
   </head>
   <body>
     <div class="container">
-      <div class="todo__input">
-        <div>
-          <input type="text" name="todo" placeholder="할 일을 입력하세요" />
+      <h1 class="date"></h1>
+      <div class="list-box">
+        <h1>To Do List</h1>
+        <div class="write-box">
+          <input
+            type="text"
+            class="todo-write"
+            placeholder="할 일을 입력해주세요."
+          />
+          <button id="add-btn">추가</button>
         </div>
-        <div>
-          <ul class="todo__list"></ul>
+        <div class="status">
+          할 일:<span id="all-todo-count">0</span>건 완료:<span
+            id="complete-todo-count"
+            >0</span
+          >건 미완료:<span id="incomplete-todo-count">0</span>건
         </div>
-      </div>
-      <div class="todo__output">
-        할 일:<span id="all-todo-count">0건</span> 완료:<span
-          id="complete-todo-count"
-          >0건</span
-        >
-        미완료:<span id="incomplete-todo-count">0건</span>
+        <table class="list-table">
+          <colgroup>
+            <col width="10%" />
+            <col width="80%" />
+            <col width="10%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>To do List</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="list-body"></tbody>
+        </table>
+        <div class="btn-container">
+          <button id="delete-btn" class="btn">선택 삭제</button>
+          <!-- <button id="lastdel-btn" class="btn">마지막 항목 삭제</button> -->
+          <button id="allDel-btn" class="btn">전체 삭제</button>
+        </div>
       </div>
     </div>
   </body>

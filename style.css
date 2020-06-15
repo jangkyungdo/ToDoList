@@ -32,11 +32,10 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .date {
-  margin-bottom: 16px;
+  margin: 16px 0;
 }
 
 .list-box {
@@ -80,6 +79,7 @@ button {
 .write-box input:focus {
   border: 1px solid var(--color-main);
 }
+
 #add-btn {
   width: 100px;
   border: none;
@@ -112,6 +112,11 @@ th {
 
 tbody td {
   text-align: center;
+}
+
+button.delete {
+  color: red;
+  background: none;
 }
 
 .btn-container {
