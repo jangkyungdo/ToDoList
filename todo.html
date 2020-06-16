@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="todo.js" defer></script>
+    <script src="background.js" defer></script>
     <link rel="stylesheet" href="todo.css" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link
@@ -26,10 +27,12 @@
           <button id="add-btn">추가</button>
         </div>
         <div class="status">
-          할 일:<span id="all-todo-count">0</span>건 완료:<span
-            id="complete-todo-count"
-            >0</span
-          >건 미완료:<span id="incomplete-todo-count">0</span>건
+          <div>총 : <span id="all-todo-count">0</span>건</div>
+          <div>
+            완료 :
+            <span id="complete-todo-count">0</span>건
+          </div>
+          <div>미완료 : <span id="incomplete-todo-count">0</span>건</div>
         </div>
         <table class="list-table">
           <colgroup>
