@@ -1,10 +1,10 @@
 // const body = document.querySelector("body");
 // const imgNumber = 5;
 
-// function paintImage(randomNumber) {
+// function createImage(randomNumber) {
 //   const image = new Image();
 //   image.src = `/img/img${randomNumber + 1}.jpg`;
-//   image.classList.add("bgImage");
+//   image.classList.add("background__image");
 //   body.appendChild(image);
 // }
 
@@ -14,12 +14,12 @@
 //   return random;
 // }
 
-// function init() {
+// function start() {
 //   const randomNumber = getRandom();
-//   paintImage(randomNumber);
+//   createImage(randomNumber);
 // }
 
-// document.addEventListener("DOMContentLoaded", init);
+// document.addEventListener("DOMContentLoaded", start);
 
 function randomBg() {
   const body = document.querySelector("body");
@@ -28,7 +28,8 @@ function randomBg() {
   const randomNumber = Math.floor(Math.random() * imgNumber);
   const image = new Image();
   image.src = `/img/img${randomNumber + 1}.jpg`;
-  image.classList.add("bgImage");
+  image.classList.add("background__image");
+
   body.appendChild(image);
 }
 document.addEventListener("DOMContentLoaded", randomBg);

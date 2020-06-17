@@ -17,6 +17,7 @@
   font-family: "Open Sans", sans-serif;
   /* font-family: "Gamja Flower", cursive; */
 }
+
 button {
   background: var(--color-light-green);
   color: var(--color-white);
@@ -38,7 +39,7 @@ button {
   color: var(--color-dark-grey);
 }
 
-.list-box {
+.todolist__box {
   display: flex;
   flex-direction: column;
   min-width: 300px;
@@ -46,13 +47,14 @@ button {
   padding: 0 10px;
 }
 
-.list-box h1 {
+.todolist__box h1 {
   text-align: center;
+  /* 수정 */
   color: var(--color-dark-grey);
   margin-bottom: 32px;
 }
 
-.list-box h1::after {
+.todolist__box h1::after {
   content: "";
   display: block;
   background-color: var(--color-dark-grey);
@@ -61,14 +63,20 @@ button {
   transform: translateX(50%);
 }
 
-.write-box {
+.todolist__write--name,
+.todolist__write--todo {
   display: flex;
-  justify-content: center;
   height: 35px;
   margin-bottom: 16px;
 }
 
-.write-box input {
+.todolist__write--name {
+  text-align: center;
+}
+
+.write__name,
+.write__todo {
+  display: block;
   font-size: 16px;
   padding: 0 8px;
   width: 100%;
@@ -76,26 +84,44 @@ button {
   border: 1px solid var(--color-dark-gray);
 }
 
-.write-box input:focus {
+.write__name:focus,
+.write__todo:focus {
   border: 1px solid var(--color-light-green);
 }
 
-#add-btn {
+.greeting,
+.write__name {
+  display: none;
+}
+
+.showing {
+  display: block;
+}
+
+.greeting {
+  color: var(--color-dark-grey);
+  background: var(--color-white);
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px;
+}
+
+#todolist__add--button {
   width: 100px;
   border: none;
 }
 
-.status {
+.todolist__status {
   display: flex;
   justify-content: space-around;
   color: var(--color-white);
-  background: #9fd6c2;
+  background: var(--color-dark-green);
   width: 100%;
   margin: 0 auto 16px;
   padding: 8px;
 }
 
-.list-table {
+.todolist__table {
   border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
@@ -104,17 +130,17 @@ button {
 
 th,
 td {
-  border: 1px solid whitesmoke;
+  border: 1px solid var(--color-light-white);
   padding: 10px 20px;
   font-size: 20px;
-  color: white;
+  color: var(--color-white);
 }
 
 th {
-  background: #9fd6c2;
+  background: var(--color-dark-green);
 }
 
-tbody td {
+#todolist__contents td {
   text-align: center;
 }
 
@@ -125,7 +151,7 @@ button.delete {
   background: none;
 }
 
-.btn-container {
+.button__container {
   display: flex;
   justify-content: space-between;
 }
@@ -135,7 +161,7 @@ button.delete {
   border-radius: 4px;
 }
 
-.bgImage {
+.background__image {
   position: absolute;
   top: 0;
   left: 0;
