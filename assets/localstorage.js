@@ -1,6 +1,7 @@
 //필요한 요소를 가져와 변수에 저장한다.
 const name = document.querySelector(".write__name");
 const greeting = document.querySelector(".greeting");
+const formName = document.querySelector(".todolist__write--name");
 
 // 값이 아니라 변수를 사용하기위해
 const USER_LOCALSTORAGE = "currentUser";
@@ -24,12 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // user name craete함수
   function askName() {
     name.classList.add(SHOWING_CLASSNAME);
-    name.addEventListener("keypress", (event) => {
-      if (event.which === 13 || event.keyCode === 13) {
-        const currentValue = name.value;
-        craeteGreeting(currentValue);
-        saveName(currentValue); // 이름을 저장하기 위한 함수 호출
-      }
+    formName.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentValue = name.value;
+      craeteGreeting(currentValue);
+      saveName(currentValue); // 이름을 저장하기 위한 함수 호출
     });
   }
 

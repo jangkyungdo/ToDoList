@@ -1,9 +1,11 @@
 const addList = document.querySelector("#todolist__add--button");
 const allDelete = document.querySelector("#allDel-btn");
 const selectDelete = document.querySelector("#delete-btn");
-const contents = document.querySelector(".write__todo");
+const todo = document.querySelector(".write__todo");
 const todoListWrap = document.querySelector("#todolist__contents");
 // const delLatEle = document.querySelector("#lastdel-btn");
+
+const formTodo = document.querySelector(".todolist__write--todo");
 
 let todos = [];
 const LOCALSTORAGE_TODOS = "todos";
@@ -11,24 +13,14 @@ const LOCALSTORAGE_TODOS = "todos";
 document.addEventListener("DOMContentLoaded", () => {
   readLocalStorage();
 
-  // 추가 btn
-  addList.addEventListener("click", () => {
-    if (!contents.value) {
+  // // 추가 btn
+  formTodo.addEventListener("submit", (e) => {
+    if (!todo.value) {
       alert("항목을 입력해주세요.");
       return;
     }
-    addElement(contents.value);
-  });
-
-  // 추가 Enter keypress
-  contents.addEventListener("keypress", () => {
-    if (event.which === 13 || event.keyCode === 13) {
-      if (!contents.value) {
-        alert("항목을 입력해주세요.");
-        return;
-      }
-      addElement(contents.value);
-    }
+    e.preventDefault();
+    addElement(todo.value);
   });
 
   // 전체 삭제 btn
@@ -123,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saveLocalStorage();
     updateComplate();
 
-    contents.value = "";
+    todo.value = "";
     // 입력하는 todo값 초기화
   }
 
@@ -131,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function deleteElement() {
     const deleteBtn = this.parentNode.parentNode;
     todoListWrap.removeChild(deleteBtn);
-    let cleanToDos = todos.filter(function (todo) {
+    let cleanToDos = todos.filter((todo) => {
       return todo.id !== parseInt(deleteBtn.id);
       //
     });

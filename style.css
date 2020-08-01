@@ -49,7 +49,6 @@ button {
 
 .todolist__box h1 {
   text-align: center;
-  /* 수정 */
   color: var(--color-dark-grey);
   margin-bottom: 32px;
 }
@@ -123,7 +122,6 @@ button {
 }
 
 .todolist__table {
-  border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 16px;
